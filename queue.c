@@ -4,12 +4,13 @@
 
 void display(int A[], int front, int rear)
 {
-    while(front<=rear)
-    {
-        printf("A[%d] : %d\t",front,  A[front]);
-        front++;
-    } 
-    
+    if(front>=0)
+        while(front<=rear)
+        {
+            printf("%d\t", A[front]);
+            front++;
+        } 
+        
     printf("\n");
 }
 
@@ -35,8 +36,30 @@ void enqueue(int *A, int N, int *front, int *rear, int n)
         printf("Overflow\n\n");
 }
 
-void dequeue()
-{}
+void dequeue(int A[], int *front, int *rear)
+{
+    int F = *front, R = *rear;
+
+    if(F == -1)
+        printf("Underflow\n\n");
+    
+    else
+    {
+        printf("Dequeued element : %d\n", A[F]);
+
+        if(F == R)
+        {   F = -1;
+            R = -1;
+        }
+
+        else
+            F++;
+
+        *front = F;
+        *rear = R;
+        display(A, F, R);
+    }
+}
 
 int main()
 {
@@ -48,12 +71,12 @@ int main()
 
     while(ch == 'y' || ch == 'Y')
     {
-        printf("Enter the operation to perform Enqueue (E) or Dequeue (D) or Exit (X) : ");
+        printf("Enter the operation to perform Enqueue (E) or Dequeue (D) or Exit (X) : \n");
         o_ch = getche();
 
         if(o_ch == 'e' || o_ch == 'E')
         {
-            printf("Enter the character : ");
+            printf("\n\nEnter the character : ");
             scanf("%d", &n);
 
             enqueue(A, N, &front, &rear, n);
