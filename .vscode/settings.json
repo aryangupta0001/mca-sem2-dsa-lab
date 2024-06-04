@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "LINKED_LIST.C": "cpp"
+        "LINKED_LIST.C": "cpp",
+        "BUBSORT.C": "cpp",
+        "bubble_sort.C": "cpp"
     }
 }
