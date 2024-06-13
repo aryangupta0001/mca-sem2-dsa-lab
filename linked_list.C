@@ -104,8 +104,7 @@ void del_beg()
 		printf("Underflow");
 
 	else
-	{	temp = (struct Node*) malloc(sizeof(struct Node));
-		temp = head;
+	{	temp = head;
 		head = head -> next;
 	}
 
@@ -119,10 +118,7 @@ void del_end()
 		printf("Underflow");
 
 	else
-	{	temp1 = (struct Node*) malloc(sizeof(struct Node));
-		temp2 = (struct Node*) malloc(sizeof(struct Node));
-
-		temp1 = head;
+	{      	temp1 = head;
 
 		if(head -> next == NULL)
 		{	free(temp1);
@@ -145,7 +141,6 @@ void del_pos(int pos)
 {	struct Node *temp1, *temp2;
 	int i, pos_out = 0;
 
-	temp1 = (struct Node*) malloc(sizeof(struct Node));
 	temp1 = head;
 
 	if(head == NULL)
@@ -158,23 +153,23 @@ void del_pos(int pos)
 		}
 
 		else
-		{	for(i = 1; i<pos-1; i++)
+		{	for(i = 1; i<pos; i++)
 			{	if(temp1 -> next == NULL)
-				{	pos_out = 1;
-					break;
+				{	printf("Node not found, Underflow");
+					return;
 				}
 				else
+				{       temp2 = temp1;
 					temp1 = temp1 -> next;
+				}
+
 			}
-			if(temp1 -> next == NULL)
-				pos_out = 1;
 
 			if(pos_out)
 				printf("Node not found, Underflow");
 			else
-			{	temp2 = temp1 -> next;
-				temp1 -> next = temp2 -> next;
-				free(temp2);
+			{	temp2 -> next = temp1 -> next;
+				free(temp1);
 			}
 		}
 	}
