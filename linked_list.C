@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<conio.h>
+#include<stdlib.h>
 
 struct Node
 {	int info;
@@ -195,11 +196,9 @@ void display()
 }
 
 
-void main()
+int main()
 {	int value, pos, op;
 	char pos_ch;
-
-	clrscr();
 
 	head = NULL;
 
