@@ -76,7 +76,7 @@ int main()
 
         if(o_ch == 'e' || o_ch == 'E')
         {
-            printf("\n\nEnter the character : ");
+            printf("\n\nEnter the element : ");
             scanf("%d", &n);
 
             enqueue(A, N, &front, &rear, n);
