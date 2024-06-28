@@ -27,7 +27,7 @@ void ins_beg(int value)
 }
 
 void ins_end(int value)
-{       struct Node *temp;
+{	struct Node *temp;
 	temp = head;
 
 	New = (struct Node*) malloc(sizeof(struct Node));
@@ -38,7 +38,7 @@ void ins_end(int value)
 	else
 	{	New -> info = value;
 		New -> next = NULL;
-
+	
 		if(head == NULL)
 			head = New;
 
@@ -63,15 +63,12 @@ void ins_pos(int value, int pos)
 		printf("Overflow");
 
 	else
-	{	New -> info = value;
-		if(pos == 1)
-		{	if(head == NULL)
-				New -> next = NULL;
-			else
-				New -> next=  head;
-			head = New;
+	{	if(pos == 1)
+		{
+			free(New);
+			ins_beg(value);
 		}
-
+		
 		else
 		{	if(head == NULL)
 			{	printf("Position Not  Found\n");
@@ -140,7 +137,7 @@ void del_end()
 
 void del_pos(int pos)
 {	struct Node *temp1, *temp2;
-	int i, pos_out = 0;
+	int i;
 
 	temp1 = head;
 
