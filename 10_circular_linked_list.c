@@ -3,16 +3,13 @@
 #include<stdlib.h>
 
 struct node
-{
-    int info;
+{   int info;
     struct node *prev, *next;
 } *head, *rear;
 
 
 void ins_beg(int value)
-{
-    struct node *New;
-
+{   struct node *New;
     New = (struct node*) malloc(sizeof(struct node));
 
     if(New == NULL)
@@ -37,7 +34,7 @@ void ins_pos(int value,  int pos)
 {   int i;
     struct node *New, *temp;
 
-    if(pos == 1)
+    if(pos <= 1)
         ins_beg(value);
     else
     {   New = (struct node*) malloc(sizeof(struct node));
@@ -55,7 +52,6 @@ void ins_pos(int value,  int pos)
                 else
                 {	printf("Position not found\n");
                     free(New);
-                    getch();
                     return;
                 }
             
@@ -82,8 +78,7 @@ void ins_end(int value)
             printf("Overflow");
         
         else
-        {
-            New -> info = value;
+        {   New -> info = value;
             rear -> next = New;
             rear = New;
             rear -> next = head;
@@ -107,8 +102,7 @@ void del_beg()
 }
 
 void del_pos(int pos)
-{
-    struct node *temp1, *temp2;
+{   struct node *temp1, *temp2;
 	int i;
 
 	temp1 = head;
@@ -130,23 +124,19 @@ void del_pos(int pos)
 				{   temp2 = temp1;
 					temp1 = temp1 -> next;
 				}
-
 			}
-
             
             temp2 -> next = temp1 -> next;
             free(temp1);
 
             if(temp2 -> next == head)
-                rear = head;
+                rear = temp2;
 		}
 	}
 }
 
 void del_end()
-{
-    struct node *temp;
-
+{   struct node *temp;
     temp = head;
     
     if(head == NULL)
@@ -173,9 +163,7 @@ void del_end()
 }
 
 void display()
-{
-    struct node *temp;
-
+{   struct node *temp;
     temp = head;
 
     printf("\n%d\t", temp->info);
@@ -196,12 +184,11 @@ int main()
     rear = NULL;
 
     while(1)
-    {
-        printf("1. Add Node\n");
+    {   printf("1. Add Node\n");
         printf("2. Delete Node\n");
         printf("3. Exit\n");
-
         printf("Enter choice : ");
+
         scanf("%d", &op);
 
         if(op == 3)
@@ -228,16 +215,17 @@ int main()
                 del_end();
         
         else if(pos_ch == 'S' || pos_ch == 's')
-            if(op == 1)
-            {   printf("\nEnter position : ");
-                scanf("%d", &pos);
+        {   printf("\nEnter position : ");
+            scanf("%d", &pos);
 
+            if(op == 1)
                 ins_pos(value, pos);
-            }
+            
+            else
+                del_pos(pos);
+        }
         
         display();
-
     }
-
     return  0;
 }
