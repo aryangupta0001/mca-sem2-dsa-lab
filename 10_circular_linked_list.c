@@ -7,7 +7,6 @@ struct node
     struct node *next;
 } *head, *rear;
 
-
 void ins_beg(int value)
 {   struct node *New;
     New = (struct node*) malloc(sizeof(struct node));
@@ -28,7 +27,6 @@ void ins_beg(int value)
         rear -> next = head;
     }
 }
-
 
 void ins_pos(int value,  int pos)
 {   int i;
@@ -159,7 +157,6 @@ void del_end()
         
         rear -> next = head;
     }
-
 }
 
 void display()

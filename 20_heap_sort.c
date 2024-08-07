@@ -50,5 +50,4 @@ int main()
 
     for(i = 0; i<N; i++)
         printf("%d\t", A[i]);   
-
 }

@@ -4,7 +4,7 @@
 
 struct node
 {   int info;
-    struct node *prev, *next;
+    struct node *prev, *next; 
 } *head, *rear;
 
 
@@ -24,7 +24,7 @@ void ins_beg(int value)
         else
         {   New -> next = head;
             head -> prev =  New;
-        }
+        } 
         head = New;
 
         head -> prev = rear;
